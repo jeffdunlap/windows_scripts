@@ -110,9 +110,9 @@ This script safely removes VMware SVGA display adapters and cleans up their driv
 - Install alternative graphics drivers (e.g., Microsoft Basic Display Adapter will be used by default)
 - Reinstall VMware Tools if needed
 
-### network_scanner.py
+### Endpoint Detective (network_scanner.py)
 
-A Python utility for scanning a list of IP addresses and classifying the discovered endpoints (e.g., printers, Windows hosts, Linux servers, cameras, and network appliances).
+Endpoint Detective scans a list of IP addresses, classifies each discovered endpoint (e.g., printers, Windows hosts, Linux servers, cameras, and network appliances), and reports host names when available.
 
 #### Requirements
 
@@ -141,3 +141,4 @@ python network_scanner.py /path/to/ip_list.txt --timeout 0.5
 - Applies simple heuristics to classify each endpoint
 - Attempts reverse DNS lookups to display host names when available
 - Prints a plain-text table summarizing each IP, host name, detected services, and classification
+- Packaged under `endpoint_detective/` for easier reuse in other tooling or environments

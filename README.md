@@ -109,3 +109,35 @@ This script safely removes VMware SVGA display adapters and cleans up their driv
 **Display issues after removal:**
 - Install alternative graphics drivers (e.g., Microsoft Basic Display Adapter will be used by default)
 - Reinstall VMware Tools if needed
+
+### network_scanner.py
+
+A Python utility for scanning a list of IP addresses and classifying the discovered endpoints (e.g., printers, Windows hosts, Linux servers, cameras, and network appliances).
+
+#### Requirements
+
+- Python 3.9+
+- Ability to reach the target IP addresses from the scanning host
+
+#### Usage
+
+1. Prepare a text file with one IP address per line (comments starting with `#` are ignored).
+2. Run the scanner:
+
+```bash
+python network_scanner.py /path/to/ip_list.txt
+```
+
+Use `--timeout` to adjust the per-port socket timeout (default: 1.0 seconds):
+
+```bash
+python network_scanner.py /path/to/ip_list.txt --timeout 0.5
+```
+
+#### How it works
+
+- Probes common service ports (SSH, Telnet, HTTP/HTTPS, SMB/RDP, RTSP, IPP, JetDirect)
+- Captures lightweight banners where available to improve identification
+- Applies simple heuristics to classify each endpoint
+- Attempts reverse DNS lookups to display host names when available
+- Prints a plain-text table summarizing each IP, host name, detected services, and classification
